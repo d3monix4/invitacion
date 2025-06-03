@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inauguración - SOTER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #000 url('fondo.webp') no-repeat center center fixed;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: gold;
+      max-width: 90%;
+      text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.6);
+      animation: fadeIn 2s ease-in;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      background: linear-gradient(to right, #00fff0, #00ff95);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    #countdown {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.8rem;
+      margin: 2rem 0;
+      color: #ffcc00;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      margin: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .yes {
+      background: linear-gradient(to right, #00ffcc, #00dd88);
+      color: #000;
+    }
+
+    .no {
+      background: linear-gradient(to right, #ff4444, #cc0000);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #curtain {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      top: 0;
+      left: 0;
+    }
+
+    .left-curtain, .right-curtain {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, #2e2e2e, #000);
+      animation: openCurtain 3s forwards ease-in-out;
+    }
+
+    .right-curtain {
+      background: linear-gradient(to left, #2e2e2e, #000);
+    }
+
+    @keyframes openCurtain {
+      0% { width: 50%; }
+      100% { width: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="curtain">
+  <div class="left-curtain"></div>
+  <div class="right-curtain"></div>
+</div>
+
+<audio id="bg-music" autoplay loop hidden>
+  <source src="Tuesday.mp3" type="audio/mpeg">
+  Tu navegador no soporta la reproducción de audio.
+</audio>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  audio.addEventListener('loadedmetadata', () => {
+    audio.currentTime = 30;
+  });
+</script>
+
+<h1>QUERIDA FAMILIA,<br>QUIERO INVITARTE A LA INAUGURACIÓN DE MI PEQUEÑO EMPRENDIMIENTO</h1>
+<h2>🎥 SOTER SOLUCIONES TECNOLÓGICAS 🎥</h2>
+
+<div id="countdown">Cargando contador...</div>
+
+<button class="btn yes" onclick="window.open('https://maps.app.goo.gl/7qz9S5Xj8yHsfWMD8', '_blank')">✅ SI VOY</button>
+<button class="btn no" onclick="alert('😈 Se donde vives, conozco tu casa...')">❌ NO VOY</button>
+
+
+<script>
+  const countdown = document.getElementById("countdown");
+  const targetDate = new Date("June 7, 2025 15:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      countdown.innerHTML = "¡Ya comenzó la inauguración!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `Faltan ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+</body>
+
+</html>
