@@ -1,173 +1,550 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inauguración - SOTER</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: #000 url('fondo.webp') no-repeat center center fixed;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      min-height: 100vh;
-      flex-direction: column;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: gold;
-      max-width: 90%;
-      text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.6);
-      animation: fadeIn 2s ease-in;
-    }
-
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
-      background: linear-gradient(to right, #00fff0, #00ff95);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-top: 1rem;
-      animation: pulse 2s infinite;
-    }
-
-    #countdown {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.8rem;
-      margin: 2rem 0;
-      color: #ffcc00;
-      font-weight: bold;
-      text-shadow: 1px 1px 4px #000;
-    }
-
-    .btn {
-      padding: 1rem 2rem;
-      margin: 1rem;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    .yes {
-      background: linear-gradient(to right, #00ffcc, #00dd88);
-      color: #000;
-    }
-
-    .no {
-      background: linear-gradient(to right, #ff4444, #cc0000);
-      color: #fff;
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    #curtain {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      display: flex;
-      top: 0;
-      left: 0;
-    }
-
-    .left-curtain, .right-curtain {
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to right, #2e2e2e, #000);
-      animation: openCurtain 3s forwards ease-in-out;
-    }
-
-    .right-curtain {
-      background: linear-gradient(to left, #2e2e2e, #000);
-    }
-
-    @keyframes openCurtain {
-      0% { width: 50%; }
-      100% { width: 0; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inauguración Oficina Matriz</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(46, 204, 113, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(231, 76, 60, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(46, 204, 113, 0.6), 0 0 30px rgba(52, 152, 219, 0.4);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+        
+        .date {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: rgba(44, 62, 80, 0.7);
+            border-radius: 10px;
+            display: inline-block;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .robot {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="30" r="15" fill="%23ecf0f1"/><rect x="30" y="50" width="40" height="40" rx="5" fill="%233498db"/><circle cx="40" cy="30" r="5" fill="%232c3e50"/><circle cx="60" cy="30" r="5" fill="%232c3e50"/><rect x="40" y="65" width="20" height="10" fill="%232c3e50"/><rect x="20" y="55" width="10" height="20" rx="5" fill="%23e74c3c"/><rect x="70" y="55" width="10" height="20" rx="5" fill="%23e74c3c"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .invitation-text {
+            margin: 2rem 0;
+            line-height: 1.6;
+            font-size: 1.2rem;
+        }
+        
+        .question {
+            font-size: 1.8rem;
+            margin: 2rem 0;
+            color: var(--light);
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-yes {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .btn-no {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-yes:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-no:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .map-container {
+            margin: 2rem 0;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+            border: 3px solid var(--secondary);
+        }
+        
+        .game-over {
+            font-size: 3rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+            margin: 2rem 0;
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            transform: translate3d(0, 0, 0);
+        }
+        
+        @keyframes shake {
+            10%, 90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+            20%, 80% {
+                transform: translate3d(2px, 0, 0);
+            }
+            30%, 50%, 70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+            40%, 60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+        
+        .camera {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%232c3e50"/><circle cx="50" cy="50" r="30" fill="%233498db"/><circle cx="50" cy="50" r="20" fill="%232c3e50"/><circle cx="50" cy="50" r="10" fill="%23e74c3c"/><rect x="30" y="20" width="40" height="10" rx="5" fill="%23ecf0f1"/></svg>');
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(236, 240, 241, 0.2);
+            font-size: 0.9rem;
+            color: rgba(236, 240, 241, 0.7);
+        }
+        
+        /* Efectos de partículas */
+        .particle {
+            position: absolute;
+            background-color: rgba(52, 152, 219, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        /* Efecto de matrix para el "Game Over" */
+        .matrix-code {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1000;
+            display: none;
+            overflow: hidden;
+            font-family: monospace;
+            color: #0f0;
+        }
+        
+        .matrix-character {
+            position: absolute;
+            opacity: 0.8;
+            animation: fall linear;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .date {
+                font-size: 1.5rem;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<div id="curtain">
-  <div class="left-curtain"></div>
-  <div class="right-curtain"></div>
-</div>
-
-<audio id="bg-music" autoplay loop hidden>
-  <source src="Tuesday.mp3" type="audio/mpeg">
-  Tu navegador no soporta la reproducción de audio.
-</audio>
-
-<script>
-  const audio = document.getElementById('bg-music');
-  audio.addEventListener('loadedmetadata', () => {
-    audio.currentTime = 30;
-  });
-</script>
-
-<h1>QUERIDA FAMILIA,<br>QUIERO INVITARTE A LA INAUGURACIÓN DE MI PEQUEÑO EMPRENDIMIENTO</h1>
-<h2>🎥 SOTER SOLUCIONES TECNOLÓGICAS 🎥</h2>
-
-<div id="countdown">Cargando contador...</div>
-
-<button class="btn yes" onclick="window.open('https://maps.app.goo.gl/7qz9S5Xj8yHsfWMD8', '_blank')">✅ SI VOY</button>
-<button class="btn no" onclick="alert('😈 Se donde vives, conozco tu casa...')">❌ NO VOY</button>
-
-
-<script>
-  const countdown = document.getElementById("countdown");
-  const targetDate = new Date("June 7, 2025 15:00:00").getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-      countdown.innerHTML = "¡Ya comenzó la inauguración!";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdown.innerHTML = `Faltan ${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
+    <div class="container">
+        <!-- Cámaras flotantes -->
+        <div class="camera" style="top: 10%; left: 5%;"></div>
+        <div class="camera" style="top: 20%; right: 10%;"></div>
+        <div class="camera" style="bottom: 15%; left: 15%;"></div>
+        <div class="camera" style="bottom: 25%; right: 5%;"></div>
+        
+        <div class="robot"></div>
+        
+        <h1>¡GRAN INAUGURACIÓN!</h1>
+        <div class="subtitle">Mi Oficina "SOTER SOLUCIONES TECNOLOGICAS"</div>
+        
+        <div class="date" id="countdown">Próximamente...</div>
+        
+        <div class="invitation-text">
+            <p>¡Estás cordialmente invitado a la inauguración de mi emprendimiento!</p>
+            <p>Un espacio dedicado a la innovación en seguridad electrónica, cámaras de vigilancia.</p>
+            <p>Agradezco tu participacion.</p>
+        </div>
+        
+        <div class="question">¿Asistirás a este evento exclusivo?</div>
+        
+        <div class="buttons">
+            <button class="btn btn-yes" id="btnYes">¡SÍ, POR SUPUESTO!</button>
+            <button class="btn btn-no" id="btnNo">NO PODRÉ ASISTIR</button>
+        </div>
+        
+        <div id="mapResponse" class="hidden">
+            <h2>¡Genial! Nos vemos allí</h2>
+            <p>Aquí está la ubicación de nuestro nuevo local:</p>
+            <div class="map-container" id="map"></div>
+            <p>Fecha: <strong id="eventDate"></strong></p>
+            <p>Hora: <strong>15:00 horas</strong></p>
+        </div>
+        
+        <div id="noResponse" class="hidden">
+            <div class="game-over">GAME OVER</div>
+            <p id="threatText" style="font-size: 1.5rem; margin-bottom: 1rem;">Sabemos dónde vives... 😈</p>
+            <p>Es broma... pero en serio, ¿no reconsiderarías? Será un evento increíble.</p>
+            <button class="btn btn-yes" id="btnReconsider">¡OK, ME CONVENCISTE!</button>
+        </div>
+        
+        <div class="footer">
+            <p>Soter © 2025 - Soluciones en tecnologia</p>
+            <p>Para más información:605174930</p>
+        </div>
+    </div>
+    
+    <div class="matrix-code" id="matrixCode"></div>
+    
+    <script>
+        // Configuración de fecha del evento (DD/MM/YYYY)
+        const eventDate = new Date();
+        eventDate.setDate(eventDate.getDate() + 3); // 2 semanas desde hoy
+        eventDate.setHours(18, 0, 0, 0);
+        
+        // Actualizar contador regresivo
+        function updateCountdown() {
+            const now = new Date();
+            const diff = eventDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = "¡HOY ES EL DÍA!";
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Formatear fecha para mostrar
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('eventDate').textContent = eventDate.toLocaleDateString('es-ES', options);
+        
+        // Botones de respuesta
+        document.getElementById('btnYes').addEventListener('click', function() {
+            document.getElementById('mapResponse').classList.remove('hidden');
+            document.getElementById('noResponse').classList.add('hidden');
+            
+            // Crear mapa (coordenadas de ejemplo - reemplazar con las reales)
+            const mapFrame = document.createElement('iframe');
+            mapFrame.setAttribute('id', 'mapFrame');
+            mapFrame.setAttribute('width', '100%');
+            mapFrame.setAttribute('height', '100%');
+            mapFrame.setAttribute('frameborder', '0');
+            mapFrame.setAttribute('style', 'border:0');
+            mapFrame.setAttribute('src', 'https://www.google.com/maps/YgMacUvZjwNyRWTz7');
+            mapFrame.setAttribute('allowfullscreen', '');
+            mapFrame.setAttribute('loading', 'lazy');
+            
+            const mapContainer = document.getElementById('map');
+            mapContainer.innerHTML = '';
+            mapContainer.appendChild(mapFrame);
+            
+            // Efecto de confeti
+            createParticles(100, 'rgba(46, 204, 113, 0.7)');
+        });
+        
+        document.getElementById('btnNo').addEventListener('click', function() {
+            document.getElementById('noResponse').classList.remove('hidden');
+            document.getElementById('mapResponse').classList.add('hidden');
+            
+            // Efecto de matrix
+            showMatrixEffect();
+            
+            // Cambiar texto de amenaza de forma aleatoria
+            const threats = [
+                "Sabemos dónde vives... 😈",
+                "Nuestras cámaras te están vigilando 👀",
+                "Error 404: Excusa no válida",
+                "El sistema detectó tu negativa... 🚨",
+                "¿Seguro que quieres hacer eso? 🤖",
+                "Nuestros robots están decepcionados 😔"
+            ];
+            
+            document.getElementById('threatText').textContent = threats[Math.floor(Math.random() * threats.length)];
+            
+            // Efecto de partículas rojas
+            createParticles(50, 'rgba(231, 76, 60, 0.7)');
+        });
+        
+        document.getElementById('btnReconsider').addEventListener('click', function() {
+            document.getElementById('noResponse').classList.add('hidden');
+            document.getElementById('mapResponse').classList.remove('hidden');
+            
+            // Detener efecto matrix
+            document.getElementById('matrixCode').style.display = 'none';
+            const chars = document.querySelectorAll('.matrix-character');
+            chars.forEach(char => char.remove());
+        });
+        
+        // Crear partículas flotantes
+        function createParticles(count, color) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posición aleatoria
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 10 + 5;
+                
+                // Configurar partícula
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                
+                // Animación
+                const duration = Math.random() * 5 + 3;
+                particle.style.animation = `float ${duration}s ease-in-out infinite`;
+                particle.style.animationDelay = `${Math.random() * 2}s`;
+                
+                document.body.appendChild(particle);
+                
+                // Eliminar después de la animación
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+        }
+        
+        // Efecto Matrix
+        function showMatrixEffect() {
+            const matrixCode = document.getElementById('matrixCode');
+            matrixCode.style.display = 'block';
+            
+            // Caracteres posibles (similar a Matrix)
+            const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+            
+            // Crear columnas de caracteres que caen
+            const cols = Math.floor(window.innerWidth / 20);
+            
+            for (let i = 0; i < cols; i++) {
+                createMatrixColumn(i * 20, chars);
+            }
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                matrixCode.style.display = 'none';
+                const chars = document.querySelectorAll('.matrix-character');
+                chars.forEach(char => char.remove());
+            }, 5000);
+        }
+        
+        function createMatrixColumn(x, chars) {
+            const delay = Math.random() * 5;
+            const count = Math.floor(Math.random() * 20) + 10;
+            const speed = Math.random() * 5 + 3;
+            
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const char = document.createElement('div');
+                    char.classList.add('matrix-character');
+                    char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                    char.style.left = `${x}px`;
+                    char.style.top = `-30px`;
+                    char.style.fontSize = `${Math.random() * 10 + 10}px`;
+                    char.style.animationDuration = `${speed}s`;
+                    
+                    document.getElementById('matrixCode').appendChild(char);
+                    
+                    // Eliminar después de la animación
+                    setTimeout(() => {
+                        char.remove();
+                    }, speed * 1000);
+                }, i * 300 + delay * 1000);
+            }
+        }
+        
+        // Efecto de seguimiento con las cámaras
+        document.addEventListener('mousemove', function(e) {
+            const cameras = document.querySelectorAll('.camera');
+            cameras.forEach(camera => {
+                const rect = camera.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * 180 / Math.PI;
+                
+                camera.style.transform = `rotate(${angle + 90}deg)`;
+            });
+        });
+    </script>
 </body>
-
 </html>
